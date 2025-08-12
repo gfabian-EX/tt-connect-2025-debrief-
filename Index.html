@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TT Connect 2025 - Advanced Post-Event Debrief</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, sans-serif; }
+    .rating input[type="radio"] { display: none; }
+    .rating label { cursor: pointer; transition: color 0.2s ease-in-out; }
+    .rating input[type="radio"]:checked ~ label,
+    .rating label:hover,
+    .rating label:hover ~ label { color: #f59e0b; }
+    .conditional-section { transition: all 0.5s ease-in-out; max-height: 0; opacity: 0; overflow: hidden; border-left: 3px solid transparent; }
+    .conditional-section.visible { max-height: 1500px; opacity: 1; padding: 1.5rem; margin-top: 1.5rem; border-left-color: #009fd9; background-color: #f8fafc; }
+    .section-legend { font-size: 1.25rem; font-weight: 700; color: #111827; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <div class="container mx-auto max-w-4xl p-4 sm:p-8">
+    <header class="text-center mb-8 py-4">
+      <h1 class="text-4xl font-bold text-[#009fd9]" style="font-weight:800;">TT Connect 2025</h1>
+      <p class="text-lg text-gray-600 mt-2">Post-Event Debrief & Feedback Form (XFN Partners)</p>
+    </header>
+
+    <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+      <p class="text-gray-700">
+        Thank you for being such an important partner in making TT Connect happen. To help us keep improving, we’ve put together this debrief to gather feedback from your perspective. Your honest thoughts will be a big help in shaping future events.
+      </p>
+    </div>
+
+    <!-- NOTE: Replace GAS_WEB_APP_URL below with your Apps Script web app URL -->
+    <form id="debriefForm" class="bg-white p-6 sm:p-8 rounded-lg shadow-md space-y-8" data-endpoint="https://script.google.com/macros/s/AKfycbwZMJW5xMQXoKH_B5sFdizCUAFiaHhKKoOQ7oHL6OcHukZXmaMpNnLK6NuHt8_rcdtvTw/exec">
+      <!-- Section 1: Your Information -->
+      <fieldset>
+        <legend class="section-legend">1. Your Information</legend>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name (Optional)</label>
+            <input type="text" id="name" name="name" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+          <div>
+            <label for="team" class="block text-sm font-medium text-gray-700 mb-1">Your Team / Company</label>
+            <select id="team" name="team" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+              <option value="" disabled selected>Select your team to reveal specific questions</option>
+              <option value="EX Team">EX Team</option>
+              <option value="A-Team">A-Team (EAs)</option>
+              <option value="HRBP">HRBP</option>
+              <option value="People Ops">People Ops</option>
+              <option value="Internal Comms">Internal Comms</option>
+              <option value="Employer Brand">Employer Brand</option>
+              <option value="Finance">Finance</option>
+              <option value="Internal Tools">Internal Tools</option>
+              <option value="Planning Lead">Planning Lead (Global Symposium,Breakout & TOD Sessions)</option>
+              <option value="ERG Lead">ERG Lead</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <div id="conditionalQuestionsContainer">
+        <!-- The conditional sections below are copied from your original file one-to-one -->
+        <!-- EX Team Questions -->
+        <div id="exTeamQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">EX Team: Internal Planning & Execution</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="exRoleClarity" class="block text-sm font-medium text-gray-700 mb-1">How would you rate the clarity of pre-event and on-site roles and responsibilities within our team?</label>
+              <select id="exRoleClarity" name="exRoleClarity" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm">
+                <option value="">Select rating</option>
+                <option>Excellent - Roles were crystal clear.</option>
+                <option>Good - Mostly clear, with minor ambiguities.</option>
+                <option>Fair - There was confusion about who was responsible for certain tasks.</option>
+                <option>Poor - Roles were not well-defined.</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Please rate the overall performance of our event agency, Kubo Kreatives.</label>
+              <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300">
+                <input type="radio" id="kubo-5" name="kuboRating" value="5"><label for="kubo-5" title="Excellent">★</label>
+                <input type="radio" id="kubo-4" name="kuboRating" value="4"><label for="kubo-4" title="Good">★</label>
+                <input type="radio" id="kubo-3" name="kuboRating" value="3"><label for="kubo-3" title="Average">★</label>
+                <input type="radio" id="kubo-2" name="kuboRating" value="2"><label for="kubo-2" title="Fair">★</label>
+                <input type="radio" id="kubo-1" name="kuboRating" value="1"><label for="kubo-1" title="Poor">★</label>
+              </div>
+              <label for="exAgencyFeedback" class="block text-sm font-medium text-gray-700 mb-1 mt-2">Please provide feedback on our partnership with Kubo Kreatives. What aspects of their performance and collaboration worked well, and what could be improved?</label>
+              <textarea id="exAgencyFeedback" name="exAgencyFeedback" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="exProgramFeedback" class="block text-sm font-medium text-gray-700 mb-1">What are your thoughts on the overall programming and agenda? What can we improve in our leadership moments, agenda building, and the process for streamlining working documents?</label>
+              <textarea id="exProgramFeedback" name="exProgramFeedback" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="exSelfImprovement" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-Reflection: What is one area our team could enhance to improve our internal collaboration for future events?</label>
+              <textarea id="exSelfImprovement" name="exSelfImprovement" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- A-Team Questions -->
+        <div id="aTeamQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">A-Team: Executive & Leader Support</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="eaLogistics" class="block text-sm font-medium text-gray-700 mb-1">How effective was our partnership in coordinating US leader logistics (e.g., ground transfers, travel comms, calendar blocks)?</label>
+              <textarea id="eaLogistics" name="eaLogistics" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="eaInfoClarity" class="block text-sm font-medium text-gray-700 mb-1">Did you receive clear and timely information from the EX team to support your leaders' needs (e.g., requests for videos, rehearsal schedules, high-level to-dos)?</label>
+              <textarea id="eaInfoClarity" name="eaInfoClarity" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="eaSupport" class="block text-sm font-medium text-gray-700 mb-1">Overall, did you feel the EX team provided the necessary support to help you and your leaders succeed during the event?</label>
+              <textarea id="eaSupport" name="eaSupport" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="eaSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: What is one thing that worked well in our partnership, and one thing we could improve for next time?</label>
+              <textarea id="eaSelfReflection" name="eaSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- HRBP Questions -->
+        <div id="hrbpQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">HRBPs: Collaboration & Employee Issues</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="hrbpSupport" class="block text-sm font-medium text-gray-700 mb-1">Did the EX team provide adequate support in filtering and addressing employee concerns before escalating them to you?</label>
+              <textarea id="hrbpSupport" name="hrbpSupport" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="hrbpValued" class="block text-sm font-medium text-gray-700 mb-1">Did you feel your expertise and perspective were valued in making offsite-related decisions?</label>
+              <textarea id="hrbpValued" name="hrbpValued" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="hrbpAlignment" class="block text-sm font-medium text-gray-700 mb-1">Were there any moments where earlier or clearer alignment would have helped?</label>
+              <textarea id="hrbpAlignment" name="hrbpAlignment" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="hrbpSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How would you rate your own contribution as a partner in this process? What did you do well, and what would you improve next time?</label>
+              <textarea id="hrbpSelfReflection" name="hrbpSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Employer Brand Questions -->
+        <div id="employerBrandQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">Employer Brand: Creative & Media</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="ebAuthority" class="block text-sm font-medium text-gray-700 mb-1">Were you given enough decision-making authority over elements specific to your scope (e.g., shot list, media direction, brand compliance)?</label>
+              <textarea id="ebAuthority" name="ebAuthority" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ebComms" class="block text-sm font-medium text-gray-700 mb-1">Were communications and approvals from EX clear and timely regarding these deliverables?</label>
+              <textarea id="ebComms" name="ebComms" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ebExpertise" class="block text-sm font-medium text-gray-700 mb-1">Did you feel your expertise was fully utilized and your inputs were valued throughout the process?</label>
+              <textarea id="ebExpertise" name="ebExpertise" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ebCoordination" class="block text-sm font-medium text-gray-700 mb-1">Were there any challenges in coordinating with the external media team that we should address for next time?</label>
+              <textarea id="ebCoordination" name="ebCoordination" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ebSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How would you rate your own contribution as a partner in this process? What worked well and what would you do differently next time?</label>
+              <textarea id="ebSelfReflection" name="ebSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Internal Comms Questions -->
+        <div id="internalCommsQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">Internal Comms: Messaging & Content</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="icInvolvement" class="block text-sm font-medium text-gray-700 mb-1">Were you involved early enough in the planning process for communications and program content you were responsible for?</label>
+              <textarea id="icInvolvement" name="icInvolvement" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="icClarity" class="block text-sm font-medium text-gray-700 mb-1">Did EX provide clear and timely information for drafting and delivering key messages?</label>
+              <textarea id="icClarity" name="icClarity" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="icApprovals" class="block text-sm font-medium text-gray-700 mb-1">Were review and approval processes efficient, or did they create bottlenecks?</label>
+              <textarea id="icApprovals" name="icApprovals" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="icContext" class="block text-sm font-medium text-gray-700 mb-1">Did you feel you had enough context to craft communications that were aligned with the event’s objectives and tone?</label>
+              <textarea id="icContext" name="icContext" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="icSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How would you grade your own effectiveness and partnership during this process? What would you keep doing or change for next year?</label>
+              <textarea id="icSelfReflection" name="icSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- People Ops Questions -->
+        <div id="peopleOpsQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">People Ops: Data, Safety & Health</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="poData" class="block text-sm font-medium text-gray-700 mb-1">How effective was the process for requesting and receiving employee data (e.g., new hires, attrition) for event planning? Was it timely and accurate?</label>
+              <textarea id="poData" name="poData" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="poSafety" class="block text-sm font-medium text-gray-700 mb-1">From an OSH perspective, did you feel our planning adequately addressed employee safety and well-being? Were you consulted at the right stages?</label>
+              <textarea id="poSafety" name="poSafety" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="poMedical" class="block text-sm font-medium text-gray-700 mb-1">How would you rate our collaboration on preparing and communicating health and safety information, such as medical assistance protocols and accredited hospitals?</label>
+              <textarea id="poMedical" name="poMedical" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="poSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How do you rate your own role as a partner in this project? What’s one thing you’re proud of and one thing you’d improve?</label>
+              <textarea id="poSelfReflection" name="poSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance Questions -->
+        <div id="financeQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">Finance: Budget & Reimbursement</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="financePO" class="block text-sm font-medium text-gray-700 mb-1">How would you assess the process for PO processing and vendor payments for this event? Did you receive sufficient context and support from the EX team to execute these tasks successfully?</label>
+              <textarea id="financePO" name="financePO" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="financeGuide" class="block text-sm font-medium text-gray-700 mb-1">Was the updated Travel & Expense guide clear and easy to communicate to attendees?</label>
+              <textarea id="financeGuide" name="financeGuide" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="financeComms" class="block text-sm font-medium text-gray-700 mb-1">Did EX provide enough proactive communication so Finance didn’t carry the full burden of handling expense queries?</label>
+              <textarea id="financeComms" name="financeComms" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="financeProcesses" class="block text-sm font-medium text-gray-700 mb-1">Were any financial processes during the event unnecessarily complex or time-consuming?</label>
+              <textarea id="financeProcesses" name="financeProcesses" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="financeSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How would you evaluate your own responsiveness and support in this process? What worked well and what could be better?</label>
+              <textarea id="financeSelfReflection" name="financeSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Internal Tools Questions -->
+        <div id="internalToolsQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">Internal Tools / IT: Technology & Support</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="itRequirements" class="block text-sm font-medium text-gray-700 mb-1">Were requirements for Slack automation, configuration, and third-party agency access clearly communicated?</label>
+              <textarea id="itRequirements" name="itRequirements" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="itLeadTime" class="block text-sm font-medium text-gray-700 mb-1">Was there sufficient lead time for your team to support technical needs (loaner laptops, equipment requests, connectivity)?</label>
+              <textarea id="itLeadTime" name="itLeadTime" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="itIssues" class="block text-sm font-medium text-gray-700 mb-1">Were there any recurring issues or delays that could be addressed earlier next time?</label>
+              <textarea id="itIssues" name="itIssues" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="itSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How effective do you feel your support was in enabling the event’s success? Where could you or your team improve?</label>
+              <textarea id="itSelfReflection" name="itSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Planning Lead Questions -->
+        <div id="planningLeadQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">Planning Leads: Global Symposium, Breakout & TOD Sessions</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="leadContext" class="block text-sm font-medium text-gray-700 mb-1">Did you feel you were provided with enough context on company themes and employee feedback to help you craft a relevant and impactful agenda for your session?</label>
+              <textarea id="leadContext" name="leadContext" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Please rate the support you received from our event agency, Kubo Kreatives.</label>
+              <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300">
+                <input type="radio" id="leadKubo-5" name="leadKuboRating" value="5"><label for="leadKubo-5" title="Excellent">★</label>
+                <input type="radio" id="leadKubo-4" name="leadKuboRating" value="4"><label for="leadKubo-4" title="Good">★</label>
+                <input type="radio" id="leadKubo-3" name="leadKuboRating" value="3"><label for="leadKubo-3" title="Average">★</label>
+                <input type="radio" id="leadKubo-2" name="leadKuboRating" value="2"><label for="leadKubo-2" title="Fair">★</label>
+                <input type="radio" id="leadKubo-1" name="leadKuboRating" value="1"><label for="leadKubo-1" title="Poor">★</label>
+              </div>
+              <label for="leadAgencyFeedback" class="block text-sm font-medium text-gray-700 mb-1 mt-2">Please provide specific feedback on the agency's support for your session (e.g., materials, manpower, purchasing, printing).</label>
+              <textarea id="leadAgencyFeedback" name="leadAgencyFeedback" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="leadComms" class="block text-sm font-medium text-gray-700 mb-1">Was communication clear, and did you feel you had the flexibility to bring your vision to life for your session?</label>
+              <textarea id="leadComms" name="leadComms" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="leadSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How do you think you showed up as a partner for the offsite? What would you repeat or adjust for next year?</label>
+              <textarea id="leadSelfReflection" name="leadSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- ERG Lead Questions -->
+        <div id="ergLeadQuestions" class="conditional-section">
+          <h3 class="font-semibold text-lg text-[#009fd9] mb-4" style="font-weight:700;">ERG Leads: Fair & Engagement</h3>
+          <div class="space-y-4">
+            <div>
+              <label for="ergSupport" class="block text-sm font-medium text-gray-700 mb-1">Did you feel the EX team set you up for success by starting planning early, providing options, and serving as a thought partner during the process?</label>
+              <textarea id="ergSupport" name="ergSupport" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Please rate the support you received from our event agency, Kubo Kreatives.</label>
+              <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300">
+                <input type="radio" id="ergKubo-5" name="ergKuboRating" value="5"><label for="ergKubo-5" title="Excellent">★</label>
+                <input type="radio" id="ergKubo-4" name="ergKuboRating" value="4"><label for="ergKubo-4" title="Good">★</label>
+                <input type="radio" id="ergKubo-3" name="ergKuboRating" value="3"><label for="ergKubo-3" title="Average">★</label>
+                <input type="radio" id="ergKubo-2" name="ergKuboRating" value="2"><label for="ergKubo-2" title="Fair">★</label>
+                <input type="radio" id="ergKubo-1" name="ergKuboRating" value="1"><label for="ergKubo-1" title="Poor">★</label>
+              </div>
+              <label for="ergAgencyFeedback" class="block text-sm font-medium text-gray-700 mb-1 mt-2">Please provide specific feedback on the agency's support (e.g., purchasing, printing, manpower).</label>
+              <textarea id="ergAgencyFeedback" name="ergAgencyFeedback" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ergEngagement" class="block text-sm font-medium text-gray-700 mb-1">Did you feel you were able to engage more people this year, even with the directive to not focus on swags?</label>
+              <textarea id="ergEngagement" name="ergEngagement" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+            <div>
+              <label for="ergSelfReflection" class="block text-sm font-medium text-gray-700 mb-1 mt-2 font-semibold" style="font-weight:700;">Self-reflection: How do you feel your ERG partnered in making this offsite successful? What could you do differently next time?</label>
+              <textarea id="ergSelfReflection" name="ergSelfReflection" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Generic Sections -->
+      <fieldset>
+        <legend class="section-legend">2. Overall Event Feedback</legend>
+        <div class="space-y-6">
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">On a scale of 1-5, how would you rate the overall success of the event?</label>
+            <div class="flex items-center space-x-2">
+              <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300 w-full">
+                <input type="radio" id="overall-5" name="overallRating" value="5" required><label for="overall-5" title="Excellent">★</label>
+                <input type="radio" id="overall-4" name="overallRating" value="4"><label for="overall-4" title="Good">★</label>
+                <input type="radio" id="overall-3" name="overallRating" value="3"><label for="overall-3" title="Average">★</label>
+                <input type="radio" id="overall-2" name="overallRating" value="2"><label for="overall-2" title="Fair">★</label>
+                <input type="radio" id="overall-1" name="overallRating" value="1"><label for="overall-1" title="Poor">★</label>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label for="highlight" class="block text-sm font-medium text-gray-700 mb-1">What was the single biggest highlight or success of the event from your perspective?</label>
+            <textarea id="highlight" name="highlight" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+          </div>
+          <div>
+            <label for="improvement" class="block text-sm font-medium text-gray-700 mb-1">What is the single biggest opportunity for improvement for next year?</label>
+            <textarea id="improvement" name="improvement" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset id="logisticsSection">
+        <legend class="section-legend">3. Logistics & Operations</legend>
+        <div class="space-y-4">
+          <div>
+            <label for="logisticsFood" class="block text-sm font-medium text-gray-700 mb-1">Regarding Food & Beverage, how would you rate the quality, variety, and handling of dietary needs?</label>
+            <textarea id="logisticsFood" name="logisticsFood" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 'Food was excellent, but more vegetarian options needed.'"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Please rate how effectively the venue and accommodations met the needs of the event.</label>
+            <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300">
+              <input type="radio" id="venue-5" name="venueRating" value="5"><label for="venue-5" title="Excellent">★</label>
+              <input type="radio" id="venue-4" name="venueRating" value="4"><label for="venue-4" title="Good">★</label>
+              <input type="radio" id="venue-3" name="venueRating" value="3"><label for="venue-3" title="Average">★</label>
+              <input type="radio" id="venue-2" name="venueRating" value="2"><label for="venue-2" title="Fair">★</label>
+              <input type="radio" id="venue-1" name="venueRating" value="1"><label for="venue-1" title="Poor">★</label>
+            </div>
+            <label for="logisticsVenue" class="block text-sm font-medium text-gray-700 mb-1 mt-2">Please provide specific comments on the venue and accommodations.</label>
+            <textarea id="logisticsVenue" name="logisticsVenue" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 'The hotel was great for sessions, but rooms were far apart.'"></textarea>
+          </div>
+          <div>
+            <label for="logisticsTiming" class="block text-sm font-medium text-gray-700 mb-1">Please provide feedback on the overall timing of the event (e.g., time of year, clash with business events) and the pacing of the daily agenda.</label>
+            <textarea id="logisticsTiming" name="logisticsTiming" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" placeholder="e.g., 'September was a busy quarter-end. The daily schedule felt well-paced.'"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset id="platformSection">
+        <legend class="section-legend">4. Event Platform & Technology</legend>
+        <div class="space-y-4">
+          <div>
+            <label for="swoogoRating" class="block text-sm font-medium text-gray-700 mb-1">Please rate your experience using Swoogo for event registration and as the main source of event information.</label>
+            <div class="rating flex flex-row-reverse justify-end text-2xl text-gray-300">
+              <input type="radio" id="swoogo-5" name="swoogoRating" value="5"><label for="swoogo-5" title="Excellent">★</label>
+              <input type="radio" id="swoogo-4" name="swoogoRating" value="4"><label for="swoogo-4" title="Good">★</label>
+              <input type="radio" id="swoogo-3" name="swoogoRating" value="3"><label for="swoogo-3" title="Average">★</label>
+              <input type="radio" id="swoogo-2" name="swoogoRating" value="2"><label for="swoogo-2" title="Fair">★</label>
+              <input type="radio" id="swoogo-1" name="swoogoRating" value="1"><label for="swoogo-1" title="Poor">★</label>
+            </div>
+          </div>
+          <div>
+            <label for="swoogoFeedback" class="block text-sm font-medium text-gray-700 mb-1">What specific feedback do you have on Swoogo's effectiveness for registration and communication? What worked well and what could be improved?</label>
+            <textarea id="swoogoFeedback" name="swoogoFeedback" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend class="section-legend">5. Key Recommendations</legend>
+        <div>
+          <label for="keyRecommendation" class="block text-sm font-medium text-gray-700 mb-1">Based on your experience, what is the #1 most critical recommendation you would make for next year's event?</label>
+          <textarea id="keyRecommendation" name="keyRecommendation" rows="4" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="flex justify-end">
+        <button type="submit" id="submitButton" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Submit Feedback
+        </button>
+      </div>
+    </form>
+
+    <div id="successMessage" class="hidden mt-8 bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md" role="alert">
+      <p class="font-bold">Thank You!</p>
+      <p>Your feedback has been successfully submitted. We appreciate you taking the time to help us improve.</p>
+    </div>
+
+    <div id="feedbackSection" class="mt-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Collected Feedback</h2>
+      <div id="feedbackContainer" class="space-y-6">
+        <p class="text-center text-gray-500">No feedback submitted yet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    // ============= Client-only logic (no Firebase) =============
+    const debriefForm = document.getElementById('debriefForm');
+    const submitButton = document.getElementById('submitButton');
+    const successMessage = document.getElementById('successMessage');
+    const feedbackContainer = document.getElementById('feedbackContainer');
+    const teamSelect = document.getElementById('team');
+    const conditionalContainer = document.getElementById('conditionalQuestionsContainer');
+    const logisticsSection = document.getElementById('logisticsSection');
+    const platformSection = document.getElementById('platformSection');
+
+    // Show/hide sections by team
+    teamSelect.addEventListener('change', (e) => {
+      const selectedTeam = e.target.value;
+      const allSections = conditionalContainer.querySelectorAll('.conditional-section');
+      allSections.forEach(section => section.classList.remove('visible'));
+
+      if (selectedTeam === 'A-Team' || selectedTeam === 'Internal Comms') {
+        logisticsSection.classList.add('hidden');
+        platformSection.classList.add('hidden');
+      } else {
+        logisticsSection.classList.remove('hidden');
+        platformSection.classList.remove('hidden');
+      }
+
+      const map = {
+        'EX Team':'exTeamQuestions',
+        'A-Team':'aTeamQuestions',
+        'HRBP':'hrbpQuestions',
+        'People Ops':'peopleOpsQuestions',
+        'Internal Comms':'internalCommsQuestions',
+        'Employer Brand':'employerBrandQuestions',
+        'Finance':'financeQuestions',
+        'Internal Tools':'internalToolsQuestions',
+        'Planning Lead':'planningLeadQuestions',
+        'ERG Lead':'ergLeadQuestions'
+      };
+      const sectionId = map[selectedTeam];
+      if (sectionId) document.getElementById(sectionId).classList.add('visible');
+    });
+
+    // Serialize all fields into a flat object, including radio values
+    function formToObject(form) {
+      const fd = new FormData(form);
+      const obj = {};
+      for (const [key, value] of fd.entries()) {
+        if (obj[key] !== undefined) {
+          // convert to array for duplicate keys
+          if (!Array.isArray(obj[key])) obj[key] = [obj[key]];
+          obj[key].push(value);
+        } else {
+          obj[key] = value;
+        }
+      }
+      // add timestamp
+      obj.timestamp = new Date().toISOString();
+      return obj;
+    }
+
+    // Optimistic UI render
+    function prependCard(item) {
+      const card = document.createElement('div');
+      card.className = "bg-white p-5 rounded-lg shadow-md border-l-4 border-[#009fd9]";
+      const ratingStars = (r) => r ? '★'.repeat(Number(r)) + '☆'.repeat(5-Number(r)) : '';
+      const section = (label, value) => {
+        if (!value && value !== 0) return '';
+        return `<div class="mt-2"><h4 class="font-semibold text-gray-700">${label}</h4><p class="text-gray-600 whitespace-pre-wrap">${value}</p></div>`;
+      };
+      card.innerHTML = `
+        <div class="flex justify-between items-start mb-3">
+          <div>
+            <p class="font-bold text-lg text-[#009fd9]">${item.team || ''}</p>
+            <p class="text-sm text-gray-600">Submitted by: ${item.name || 'Anonymous'}</p>
+          </div>
+          <span class="text-xs text-gray-400">${new Date(item.timestamp).toLocaleDateString()}</span>
+        </div>
+        <div class="space-y-2">
+          ${section('Overall Rating', ratingStars(item.overallRating))}
+          ${section('Biggest Highlight', item.highlight)}
+          ${section('Biggest Opportunity for Improvement', item.improvement)}
+          ${section('#1 Key Recommendation', item.keyRecommendation)}
+        </div>
+      `;
+      feedbackContainer.prepend(card);
+    }
+
+    debriefForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+
+      const endpoint = debriefForm.dataset.endpoint;
+      if (!endpoint || endpoint === 'GAS_WEB_APP_URL') {
+        alert("Please set your Google Apps Script Web App URL in the form's data-endpoint attribute.");
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Feedback';
+        return;
+      }
+
+      const payload = formToObject(debriefForm);
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+          redirect: 'follow',
+          mode: 'no-cors' // lets the submit succeed even if CORS is off on Apps Script
+        });
+        // Optimistic reset + toast
+        debriefForm.reset();
+        conditionalContainer.querySelectorAll('.conditional-section').forEach(s => s.classList.remove('visible'));
+        successMessage.classList.remove('hidden');
+        setTimeout(() => successMessage.classList.add('hidden'), 5000);
+        prependCard(payload);
+      } catch (err) {
+        console.error(err);
+        alert('There was an error submitting your feedback. Please try again.');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Submit Feedback';
+      }
+    });
+  </script>
+</body>
+</html>
